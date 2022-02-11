@@ -1,0 +1,30 @@
+const  mongoose=require('mongoose')
+const salesSchema=new mongoose.Schema({
+    customer:{
+        ref:'User',
+        type:mongoose.Types.ObjectId
+    },
+    total:{
+        type:Number,
+        required:true
+    },
+    products:[{
+        product:{
+            ref:'Product',
+            type:mongoose.Types.ObjectId
+        },
+        quantity:{
+            type:Number,
+            required:true
+        },
+        price:{
+            type:Number,
+            required:true
+        }
+    }],
+    date:{
+        type:Date,
+        default:Date.now()
+    }
+})
+module.exports=mongoose.model('Sales',salesSchema)
