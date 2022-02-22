@@ -6,8 +6,7 @@ const Cards = (props) => {
   const{name,price,picture,description,agregarItem}=props
   const [cantidad,setCantidad]=useState(0)
   const onSubmit=(e)=>{
-    e.preventDefault()
-    console.log(cantidad)
+    e.preventDefault() 
     if(cantidad!==0){
       const carrito=[
         {
@@ -19,15 +18,20 @@ const Cards = (props) => {
       ]
       const item={
         carrito,
-        subtotal:props.subtotal+20
-      }
-      console.log(item)
-      if(props.subtotal!==0){
-        const viejos=props.carrito.map((item)=>(
+        subtotal:props.subtotal+(cantidad*price)
+      } 
+      if(props.subtotal!==0){ 
+        props.carrito.map((item)=>(
           carrito.push(item)
         ))
       }
       agregarItem(item) 
+      localStorage.setItem('carrito',JSON.stringify(item)) 
+      localStorage.setItem('cantidad',JSON.stringify(cantidad))
+      Swal.fire({
+        title:'Producto agregado correctamente',
+        icon:'success'
+      })
     }
     else{
       Swal.fire(

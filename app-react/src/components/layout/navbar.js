@@ -51,7 +51,7 @@ const Navbar = (props) => {
                     : "hover:text-blue-400 hover:border-b-4 text-gray-400  border-blue-400 transition duration-300"
                 }`}
                 >
-                Carrito
+                Carrito 
               </Link>
               {sesionIniciada()
               ?

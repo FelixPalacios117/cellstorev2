@@ -4,3 +4,9 @@ export const sesionIniciada=()=>{
     }
     return false
 }
+export const carritoExistente=()=>{
+    if(localStorage.getItem('carrito')){
+        return true
+    }
+    return false
+}
