@@ -2,7 +2,8 @@ const mongoose=require('mongoose')
 const ProductSchema= new mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     description:{
         type:String,
@@ -10,9 +11,10 @@ const ProductSchema= new mongoose.Schema({
     },
     brand:{
         ref:"Brand",
-        type:mongoose.Schema.Types.ObjectId
+        type:mongoose.Schema.Types.ObjectId,
+        required:true
     },
-    image:{
+    picture:{
         type:String
     },
     price:{

@@ -80,5 +80,6 @@ module.exports=function(){
        }) 
       }
     },userController.delete)
+    router.get('/',userController.getAll)
     return router
 }

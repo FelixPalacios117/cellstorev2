@@ -3,6 +3,18 @@ const jwt=require('jsonwebtoken')
 let Validator=require('validatorjs')
 const { encrypt, decrypt } = require("../middlewares/rsa");
 const { json } = require('body-parser');
+exports.getAll=async(req,res)=>{
+    try {
+        const nuevo=await Users.find({})
+        res.json({
+            todos:nuevo
+        })
+    } catch (error) {
+        res.json({
+            error:""+error
+        })
+    }
+}
 exports.login=async(req,res)=>{
     try { 
         const {username,password}=req.body
@@ -20,13 +32,13 @@ exports.login=async(req,res)=>{
                 token:token 
             })
         }else{ 
-            res.status(400).json({
+            res.status(202).json({
                 message:"Ingresa el usuario y contraseña"
             })
         }
     } catch (error) {
         console.log(error)
-        res.json({
+        res.status(202).json({
             message:""+error
         })
     }
